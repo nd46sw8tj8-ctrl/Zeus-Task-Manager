@@ -1,0 +1,283 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+  width: 100%;
+  background: #f5f5f5;
+  --bulma-modal-background-background-color: rgba(20, 25, 45, 0.3);
+}
+
+.app-layout {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  min-height: 100vh;
+  width: 100%;
+  background: #f5f5f5;
+}
+
+.menu-title {
+  padding: 1.5vh 1.5vw;
+  font-size: 1rem;
+  text-align: left;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 250px;
+  width: 20%;
+  min-height: 100vh;
+  padding: 24px 16px;
+  background: #e9b20e;
+  justify-content: flex-start;
+}
+
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.2rem;
+  width: 100%;
+}
+
+.sidebar nav a {
+  display: block;
+  width: 100%;
+  padding: 1.5vh 1.5vw;
+  color: rgb(51, 63, 110);
+  text-decoration: none;
+  border-radius: 20px;
+  text-align: left;
+}
+
+.sidebar nav a:hover {
+  background: #ffd04d;
+}
+
+.main-content {
+  flex: 1;
+  min-width: 0;
+  margin: clamp(1rem, 3vw, 2.5rem);
+  background: #f5f5f5;
+}
+
+.zeus-page {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 4.2vh var(--page-padding-x) 5vh;
+  padding-left: 5vw;
+  overflow: hidden;
+  background: var(--page-bg);
+  text-align: left;
+}
+
+.zeus-page::before {
+  position: absolute;
+  z-index: 0;
+  top: -27vh;
+  left: 50%;
+  width: 73vw;
+  height: 63vh;
+  transform: translateX(-50%);
+  background: radial-gradient(ellipse at center,
+      rgba(255, 192, 55, 0.9) 0%,
+      rgba(255, 242, 104, 0.72) 32%,
+      rgba(220, 255, 170, 0.35) 58%,
+      rgba(237, 240, 242, 0) 76%);
+  content: "";
+  pointer-events: none;
+}
+
+.zeus-page>* {
+  position: relative;
+  z-index: 1;
+}
+
+.rounded-table {
+  border: 1px solid #dbdbdb;
+  border-radius: 12px;
+  overflow: visible;
+}
+
+.rounded-table .task-table {
+  margin-bottom: 0;
+  border: none;
+  border-radius: 12px;
+  border-collapse: separate;
+  border-spacing: 0;
+  text-align: left;
+}
+
+.rounded-table .task-table th:first-child {
+  border-top-left-radius: 12px;
+}
+
+.rounded-table .task-table th:last-child {
+  border-top-right-radius: 12px;
+}
+
+.rounded-table .task-table tr:last-child td:first-child {
+  border-bottom-left-radius: 12px;
+}
+
+.rounded-table .task-table tr:last-child td:last-child {
+  border-bottom-right-radius: 12px;
+}
+
+.task-table td:nth-child(6) {
+  text-align: right;
+}
+
+.dashboard-calendar td:nth-child(3) {
+  text-align: right;
+}
+
+.dashboard-calendar td:nth-child(3) .status {
+  float: right;
+  text-align: right;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 200;
+  color: black;
+}
+
+.box {
+  padding: 1rem;
+  margin: 1rem;
+}
+
+.text-align-left {
+  text-align: left;
+}
+
+.status {
+    position: relative;
+  display: inline-block;
+  z-index: 20;
+  /* float: left; */
+  display: inline;
+  word-wrap: break-word;
+  position: relative;
+  z-index: 10;
+}
+
+.status .done {
+  color: #387416;
+  background: #c2ffd8;
+  border-radius: 25px;
+  padding: 10px;
+
+}
+
+.status .in-progress {
+  color: #a56219;
+  background: #f9e3bb;
+  border-radius: 25px;
+  padding: 10px;
+}
+
+.status .todo {
+  color: #676866;
+  background: #d9dbda;
+  border-radius: 25px;
+  padding: 10px;
+}
+
+.custom-modal {
+  background-color: #ffd04d;
+  color: black;
+  border-radius: 20px
+}
+
+.custom-modal .label {
+  text-align: left;
+}
+
+.custom-modal .modal-card-body {
+  flex-grow: 0;
+  flex-shrink: 1;
+  overflow-y: auto;
+}
+
+.task-datetime {
+  background-color: #f8fafc;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  color: #1f2937;
+  padding: 0.75rem 1rem;
+  height: 3rem;
+  font-family: inherit;
+  box-shadow: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.task-datetime:focus {
+  border-color: #485fc7;
+  box-shadow: 0 0 0 0.125em rgba(72, 95, 199, 0.2);
+  outline: none;
+}
+
+.task-datetime:hover {
+  border-color: #485fc7;
+}
+
+.task-datetime::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.task-datetime::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
+}
+
+.datetime-picker {
+  width: 100%;
+  max-width: 400px;
+  height: 45px;
+  font-size: 16px;
+  display: block;
+  cursor: pointer;
+  color: #243047;
+  background-color: #f0f4ff;
+}
+
+.dropdown {
+  position: relative;
+}
+
+
+.dropdown.is-up .dropdown-menu {
+  top: auto;
+  bottom: 100%;
+}
+
+.dropdown.is-active {
+  z-index: 100;
+}
+
+.dropdown-menu {
+  z-index: 1000;
+  min-width: 100%;
+}
+
+.dropdown-menu .dropdown-content {
+  max-height: inherit;
+  overflow-y: auto;
+}
+
+.in-progress {
+  background-color: #ffc16b;
+  color: #7a621c;
+  border-radius: 12px;
+}
